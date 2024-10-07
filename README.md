@@ -2,11 +2,9 @@
 
 
 ## Project Tutorial - 
-![Screenshot 2024-10-07 191843](https://github.com/user-attachments/assets/283c942e-9f82-4b09-90af-b243b7443510)
-
-
 ![Screenshot 2024-10-07 191928](https://github.com/user-attachments/assets/0cd36653-2efc-4076-bad1-c5d947bd8f5f)
 
+Video Link -- https://drive.google.com/file/d/1XCGfxqwn9iKMMdzHCLKQoej51EubjfvC/view?usp=drive_link
 
 ## 1. Problem Statement
 The Liveness Detection Project is designed to distinguish between real human faces and spoofed attacks on biometric systems. The goal is to detect whether the person is real or if various forms of attacks such as printed photos, masks, phone or monitor displays are used to trick the system. The project focuses on detecting the following types of attacks:
