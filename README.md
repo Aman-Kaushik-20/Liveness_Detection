@@ -2,19 +2,36 @@
 
 
 ## Project Tutorial - 
-![Screenshot 2024-10-07 191928](https://github.com/user-attachments/assets/0cd36653-2efc-4076-bad1-c5d947bd8f5f)
 
-Video Link -- https://drive.google.com/file/d/1XCGfxqwn9iKMMdzHCLKQoej51EubjfvC/view?usp=drive_link
+https://github.com/user-attachments/assets/fec9cad3-c66d-4921-9986-2b2126312081
 
-## 1. Problem Statement
-The Liveness Detection Project is designed to distinguish between real human faces and spoofed attacks on biometric systems. The goal is to detect whether the person is real or if various forms of attacks such as printed photos, masks, phone or monitor displays are used to trick the system. The project focuses on detecting the following types of attacks:
-- **Outline**: Printed outlines of photos.
-- **Outline3d**: Portraits printed on cylindrical surfaces.
-- **Mask**: Printed portraits with cut-out eyes.
-- **Mask3d**: Connected cardboard masks.
-- **Phone**: Photos displayed on a smartphone.
-- **Monitor**: Photos displayed on a computer screen.
-- **Real**: A real human face.
+
+![68747470733a2f2f6431747a7a6e73366437397375322e636c6f756466726f6e742e6e65742f75706c6f6164732f656d6265646465645f696d6167652f63373163326438383835383362333934313361333632363732326430336564613262613665613933383637326639](https://github.com/user-attachments/assets/7f551f79-b763-4e76-a54d-2c36f03c2547)
+
+
+### Problem Statement  
+
+The **Liveness Detection Project** is designed to enhance security in biometric systems by distinguishing between real human faces and spoofed attacks. Biometric systems are increasingly being targeted by attackers attempting to bypass authentication using fake identities. This project focuses on safeguarding these systems by detecting whether the subject is a real person or if various forms of spoofing techniques are being used to trick the system.  
+
+The project is aimed at detecting the following types of attacks:  
+
+- **Outline:** Printed outlines of photos, often used to mimic facial contours.  
+- **Outline3D:** Portraits printed on cylindrical surfaces to give a 3D effect.  
+- **Mask:** Printed portraits with cut-out eyes designed to simulate real facial features.  
+- **Mask3D:** Connected cardboard masks replicating human faces in three dimensions.  
+- **Phone:** Photos displayed on a smartphone screen to impersonate a legitimate user.  
+- **Monitor:** Photos displayed on a computer screen, typically used for remote spoofing.  
+- **Real:** A real human face, ensuring a legitimate and secure authentication process.  
+
+### Security Factor  
+
+This project significantly strengthens the **security and reliability** of biometric authentication systems by preventing unauthorized access and identity fraud. By accurately detecting liveness, the system ensures that only genuine individuals are granted access, mitigating risks associated with:  
+
+- **Identity theft** and impersonation.  
+- **Unauthorized access to sensitive systems or data.**  
+- **Breaches in secure environments requiring robust authentication mechanisms.**  
+
+The solution contributes to creating a **trustworthy biometric ecosystem**, which is crucial for applications in banking, healthcare, government ID verification, and other high-security domains.  
 
 ## 2. Data Collection
 The dataset was gathered from multiple sources including real human face captures and spoofed attack images. The dataset covers different lighting conditions, angles, and spoofing methods such as printed masks, phone displays, and monitor attacks. These variations help the model generalize better in detecting real vs fake faces.
