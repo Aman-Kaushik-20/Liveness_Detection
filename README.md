@@ -190,7 +190,7 @@ The trained model was tested in real-time using video input to evaluate its accu
 from ultralytics import YOLO
 
 # Load a pretrained YOLO11n model
-model = YOLO("yolo11n.pt")
+model = YOLO("yolov8x.pt")
 
 # Define path to directory containing images and videos for inference
 source = "path/to/dir"
