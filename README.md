@@ -168,19 +168,115 @@ print(f"Total rejected due to no face detected: {rejected_no_face}")
 
 ## 5. Model Training
 The model was trained using the YOLO architecture, which is ideal for real-time object detection tasks. The following steps were followed:
-- **Model**: Pretrained YOLOv8 and YOLOv11 models were fine-tuned on the liveness dataset.
+- **Model**: Pretrained YOLOv8 models were fine-tuned on the liveness dataset.
 - **Training process**:
   - Data augmentation techniques were used to improve the model's generalization.
   - The model was trained for 100 epochs with an image size of 640.
-  - The training was done on the **COCO** dataset format.
+  - The training was done on the **25K custom** dataset format.
+
+### **1. Install Requirements**
+Install the required YOLO library:
+```bash
+pip install ultralytics
+```
+
+---
+
+### **2. Dataset Structure**
+Ensure your dataset is structured as follows:
+
+```
+liveness_dataset/
+│
+├── images/
+│   ├── train/
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   └── ...
+│   ├── val/
+│   │   ├── image101.jpg
+│   │   ├── image102.jpg
+│   │   └── ...
+│   ├── test/
+│       ├── image201.jpg
+│       ├── image202.jpg
+│       └── ...
+│
+├── labels/
+│   ├── train/
+│   │   ├── image1.txt
+│   │   ├── image2.txt
+│   │   └── ...
+│   ├── val/
+│   │   ├── image101.txt
+│   │   ├── image102.txt
+│   │   └── ...
+│   ├── test/
+│       ├── image201.txt
+│       ├── image202.txt
+│       └── ...
+```
+
+- **`images/`**: Contains the train, validation, and test images.
+- **`labels/`**: Contains the YOLO annotation files for each image.
+
+---
+
+### **3. YAML File Configuration**
+Create a YAML file (`coco8.yaml`) to define the dataset paths and classes:
+
+```yaml
+# Dataset Paths
+path: ../datasets/liveness_dataset  # Root directory of your dataset
+
+train: images/train  # Train images (relative to 'path')
+val: images/val      # Validation images (relative to 'path')
+test: images/test    # Test images (optional)
+
+# Number of Classes
+nc: 2  # Number of classes (e.g., 0 = fake, 1 = real)
+
+# Class Names
+names:
+    0: fake
+    1: real
+```
+
+---
+
+### **4. Training Code**
+Use the following Python code to train the YOLO model:
 
 ```python
-! pip install ultralytics
 from ultralytics import YOLO
 
-# Load and train the model
-model = YOLO("yolo8x.pt")  # Load a pretrained model
-results = model.train(data="coco8.yaml", epochs=100, imgsz=640)
+# Load a pretrained YOLO model
+model = YOLO("yolo8x.pt")  # Replace with the desired YOLO model
+
+# Train the model
+results = model.train(
+    data="coco8.yaml",  # Path to the YAML file
+    epochs=100,         # Number of training epochs
+    imgsz=640           # Image size
+)
+
+# Save the trained model
+model.save("best_yolo_model.pt")
+```
+
+---
+
+### **5. YOLO Label Format**
+Each image's annotations must be stored in a corresponding `.txt` file inside the `labels/` folder. The format for each line is:
+```
+<class_id> <x_center> <y_center> <width> <height>
+```
+- **`<class_id>`**: Class index (e.g., 0 for fake, 1 for real).
+- **`<x_center>`**, **`<y_center>`**, **`<width>`**, and **`<height>`**: Normalized bounding box coordinates relative to the image dimensions.
+
+Example annotation for an image with one bounding box:
+```
+1 0.3125 0.46875 0.3125 0.46875
 ```
 
 ## 6. Model Testing
